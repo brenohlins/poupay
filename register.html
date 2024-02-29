@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Usuários</title>
+</head>
+<body>
+    <h1>Registro de Usuários</h1>
+    <form id="registerUserForm">
+        <label for="username">Nome de Usuário:</label>
+        <input type="text" id="username" name="username" required>
+
+        <label for="password">Senha:</label>
+        <input type="password" id="password" name="password" required>
+
+        <button type="submit">Registrar Usuário</button>
+    </form>
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            const serverUrl = 'https://parallel-dour-parent.glitch.me/'; // Substitua pelo link real do seu Glitch
+
+            $('#registerUserForm').submit(function (event) {
+                event.preventDefault();
+                
+                const username = $('#username').val();
+                const password = $('#password').val();
+
+                $.post(`${serverUrl}/register-user`, { username, password }, function (data) {
+                    alert(data);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
